@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--
+  ########################################################################
+  #   OpenShift Deploy Application Module
+  ########################################################################
+  -->
+  <type type="openshift.deployAppModule" extends="xlrelease.PythonScript">
+      <property name="iconLocation" default="openshift/openshift_logo.png" hidden="true"/>
+      <property name="taskColor" hidden="true" default="#ff0000"/>
+      <property name="openShiftServer" kind="ci" referenced-type="openShift.Server" category="input" description="Open Shift Server."/>
+      <property name="ocProject" category="input" description="Name of the OpenShift Project" />
+      <property name="appName" category="input" description="Name of the Application" />
+      <property name="dockerImage" category="input" description="Name of the Docker Image" />
+      <property name="dockerTag" category="input" description="The Docker Tag for the Image" />
+      <!-- ############ Output Properties ############## -->
+      <property name="output" required="false" category="output" description="Console output of the remote process (stdout)."/>
+      <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
+  </type>
+
+    <!--
+    ########################################################################
+    #   OpenShift Un-Deploy Application Module
+    ########################################################################
+    -->
+    <type type="openshift.unDeployAppModule" extends="xlrelease.PythonScript">
+        <property name="iconLocation" default="openshift/openshift_logo.png" hidden="true"/>
+        <property name="taskColor" hidden="true" default="#ff0000"/>
+        <property name="openShiftServer" kind="ci" referenced-type="openShift.Server" category="input" description="Open Shift Server."/>
+        <property name="ocProject" category="input" description="Name of the OpenShift Project" />
+        <property name="appName" category="input" description="Name of the Application" />
+        <!-- ############ Output Properties ############## -->
+        <property name="output" required="false" category="output" description="Console output of the remote process (stdout)."/>
+        <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
+    </type>
+
+    <!--
+    ########################################################################
+    #   OpenShift Create Project
+    ########################################################################
+    -->
+    <type type="openshift.createProject" extends="xlrelease.PythonScript">
+        <property name="iconLocation" default="openshift/openshift_logo.png" hidden="true"/>
+        <property name="taskColor" hidden="true" default="#ff0000"/>
+        <property name="openShiftServer" kind="ci" referenced-type="openShift.Server" category="input" description="Open Shift Server."/>
+        <property name="ocProject" category="input" description="Name of the OpenShift Project" />
+        <property name="ocProjectDesc" category="input" description="OpenShift Project Description" />
+        <property name="ocProjectName" category="input" description="OpenShift Project Name" />
+        <!-- ############ Output Properties ############## -->
+        <property name="output" required="false" category="output" description="Console output of the remote process (stdout)."/>
+        <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
+    </type>
+
+    <!--
+    ########################################################################
+    #   OpenShift Create Project
+    ########################################################################
+    -->
+    <type type="openshift.destroyProject" extends="xlrelease.PythonScript">
+        <property name="iconLocation" default="openshift/openshift_logo.png" hidden="true"/>
+        <property name="taskColor" hidden="true" default="#ff0000"/>
+        <property name="openShiftServer" kind="ci" referenced-type="openShift.Server" category="input" description="Open Shift Server."/>
+        <property name="ocProject" category="input" description="OpenShift Project" />
+        <!-- ############ Output Properties ############## -->
+        <property name="output" required="false" category="output" description="Console output of the remote process (stdout)."/>
+        <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
+    </type>
+
+  <!--
+  ########################################################################
+  #   OpenShift Server Configuration
+  ########################################################################
+  -->
+  <type type="openShift.Server" extends="configuration.HttpConnection">
+      <property name="ocHome" required="false" description="OC Home directory (optional)."/>
+      <property name="ocToken" required="false" category="input" description="OC Token" />
+  </type>
+
+ </synthetic>

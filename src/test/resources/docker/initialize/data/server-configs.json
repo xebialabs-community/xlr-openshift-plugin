@@ -1,0 +1,11 @@
+[
+  {
+    "id": "Configuration/Custom/XL_Manager",
+    "type":"openShift.Server",
+    "title":"OpenShiftServer",
+    "url":"https://10.2.2.2:8443",
+    "username":"admin",
+    "password":"admin",
+    "ocHome":"/data/src/test/resources/docker/initialize/"
+  }
+]

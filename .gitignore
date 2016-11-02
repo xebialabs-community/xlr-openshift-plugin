@@ -1,0 +1,7 @@
+.gradle
+.idea
+build
+xlr-servicenow-plugin.iml
+*.ipr
+*.iws
+src/downloads/
