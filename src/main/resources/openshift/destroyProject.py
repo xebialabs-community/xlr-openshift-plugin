@@ -18,11 +18,12 @@ print "URL       = %s" % ocUrl
 print "USERNAME  = %s" % ocUsername
 print "OC        = %s" % ocCmd
 print " "
-cmdLogon  = "%s login --server=%s -u %s -p %s --insecure-skip-tls-verify\n" % (ocCmd, ocUrl, ocUsername, ocPassword)
+cmdLogon  = "%s login --server=%s -u %s -p %s --insecure-skip-tls-verify" % (ocCmd, ocUrl, ocUsername, ocPassword)
 cmdProject ="%s delete project %s" % (ocCmd, ocProject)
 script = """
-%s
-%s
+
+%s && %s
+
 """ % (cmdLogon, cmdProject)
 print script
 print "-------------------------"
