@@ -18,16 +18,12 @@ print "URL       = %s" % ocUrl
 print "USERNAME  = %s" % ocUsername
 print "OC        = %s" % ocCmd
 print " "
-cmdLogon  = "%s login --server=%s -u %s -p %s --insecure-skip-tls-verify\n" % (ocCmd, ocUrl, ocUsername, ocPassword)
+cmdLogon  = "%s login --server=%s -u %s -p %s --insecure-skip-tls-verify" % (ocCmd, ocUrl, ocUsername, ocPassword)
 cmdProject ="%s project %s" % (ocCmd, ocProject)
 cmdScale = "%s scale --replicas=0 dc %s" % (ocCmd, appName)
 cmdUnDeploy = "%s delete dc %s \n" % (ocCmd, appName)
 script = """
-%s
-%s
-%s
-%s
-%s status
+%s && %s && %s && %s && %s status
 """ % (cmdLogon, cmdProject, cmdScale, cmdUnDeploy, ocCmd)
 print script
 print "-------------------------"
