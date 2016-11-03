@@ -5,7 +5,14 @@
 #
 
 import sys
-import subprocess
+
+from java.lang import Exception
+from java.io import PrintWriter
+from java.io import StringWriter
+
+from com.xebialabs.overthere import CmdLine, ConnectionOptions, OperatingSystemFamily, Overthere
+from com.xebialabs.overthere.local import LocalConnection
+from com.xebialabs.overthere.util import CapturingOverthereExecutionOutputHandler, OverthereUtils
 
 ocUsername = openShiftServer['username']
 ocPassword = openShiftServer['password']
@@ -22,17 +29,33 @@ cmdLogon  = "%s login --server=%s -u %s -p %s --insecure-skip-tls-verify" % (ocC
 cmdProject ="%s delete project %s" % (ocCmd, ocProject)
 script = """
 
-%s && %s
+%s
+%s
 
 """ % (cmdLogon, cmdProject)
 print script
 print "-------------------------"
 
-proc = subprocess.Popen( script, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout = CapturingOverthereExecutionOutputHandler.capturingHandler()
+stderr = CapturingOverthereExecutionOutputHandler.capturingHandler()
+
+try:
+    connection = LocalConnection.getLocalConnection()
+    targetScript = connection.getTempFile('oc-script', '.bat')
+    OverthereUtils.write( String(script).getBytes(), targetScript)
+    targetScript.setExecutable(True)
+    cmd = CmdLine.build( targetScript.getPath() )
+    connection.execute( stdout, stderr, cmd )
+except Exception, e:
+    stacktrace = StringWriter()
+    writer = PrintWriter( stacktrace, True )
+    e.printStackTrace(writer)
+    stderr.hadleLine(stacktrace.toString())
 
 # set variables
-output = proc.stdout.read()
-error = proc.stderr.read()
+output = stdout.getOutput()
+error = stderr.getOutput()
+
 
 if len(output) > 0:
     print "```"

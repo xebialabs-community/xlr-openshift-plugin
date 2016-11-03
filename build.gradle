@@ -26,6 +26,14 @@ version='1.0.2'
 repositories {
     mavenLocal()
     mavenCentral()
+    maven {
+        credentials {
+            username 'community-plugins'
+            password 'community'
+        }
+        url 'http://nexus.xebialabs.com/nexus/content/repositories/releases'
+    }
+    maven { url "http://repo.maven.apache.org/maven2" }
 }
 
 license {
