@@ -74,6 +74,22 @@
         <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
     </type>
 
+    <!--
+    ########################################################################
+    #   OpenShift Create Resource
+    ########################################################################
+    -->
+    <type type="openshift.createResource" extends="xlrelease.PythonScript">
+        <property name="iconLocation" default="openshift/openshift_logo.png" hidden="true"/>
+        <property name="taskColor" hidden="true" default="#ff0000"/>
+        <property name="openShiftServer" kind="ci" referenced-type="openShift.Server" category="input" description="Open Shift Server."/>
+        <property name="ocProject" category="input" description="OpenShift Project" />
+        <property name="resourceYaml" category="input" description="YAML resource description" size="large"/>
+        <!-- ############ Output Properties ############## -->
+        <property name="output" required="false" category="output" description="Console output of the remote process (stdout)."/>
+        <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
+    </type>
+
   <!--
   ########################################################################
   #   OpenShift Server Configuration
