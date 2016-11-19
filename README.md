@@ -4,7 +4,7 @@
 This document descripts the functionality provide by the `xlr-openshift-plugin`
 
 ## Overview
-This module offers tasks to apply Ansible playbooks on a remote hosts.
+This module offers tasks to configure and manage workflows using OpenShift.
 
 ## Requirements
 	
