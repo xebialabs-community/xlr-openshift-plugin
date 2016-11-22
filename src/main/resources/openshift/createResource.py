@@ -42,7 +42,7 @@ try:
     %s
     """ % (cmdLogon, cmdProject, cmdCreate)
 
-    print script
+    #print script
     print "-------------------------"
 
     targetScript = connection.getTempFile('oc-script', '.bat')

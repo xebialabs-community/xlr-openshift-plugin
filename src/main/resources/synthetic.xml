@@ -26,6 +26,38 @@
       <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
   </type>
 
+   <!--
+   ########################################################################
+   #   OpenShift Deploy Application
+   ########################################################################
+   -->
+    <type type="openshift.deployApplicationFromConfig" extends="xlrelease.PythonScript">
+        <property name="iconLocation" default="openshift/openshift_logo.png" hidden="true"/>
+        <property name="taskColor" hidden="true" default="#ff0000"/>
+        <property name="openShiftServer" kind="ci" referenced-type="openShift.Server" category="input" description="Open Shift Server."/>
+        <property name="ocProject" category="input" description="Name of the OpenShift Project" />
+        <property name="deploymentConfig" category="input" description="Deployment Configuration" />
+        <!-- ############ Output Properties ############## -->
+        <property name="output" required="false" category="output" description="Console output of the remote process (stdout)."/>
+        <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
+    </type>
+
+    <!--
+    ########################################################################
+    #   OpenShift Expose Application
+    ########################################################################
+    -->
+    <type type="openshift.exposeApplication" extends="xlrelease.PythonScript">
+        <property name="iconLocation" default="openshift/openshift_logo.png" hidden="true"/>
+        <property name="taskColor" hidden="true" default="#ff0000"/>
+        <property name="openShiftServer" kind="ci" referenced-type="openShift.Server" category="input" description="Open Shift Server."/>
+        <property name="ocProject" category="input" description="Name of the OpenShift Project" />
+        <property name="serviceName" category="input" description="Service Name" />
+        <!-- ############ Output Properties ############## -->
+        <property name="output" required="false" category="output" description="Console output of the remote process (stdout)."/>
+        <property name="error" required="false" category="output" description="Error output of the remote process (stderr)."/>
+    </type>
+
     <!--
     ########################################################################
     #   OpenShift Un-Deploy Application Module

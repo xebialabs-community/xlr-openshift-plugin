@@ -32,7 +32,7 @@ cmdUnDeploy = "%s delete dc %s \n" % (ocCmd, appName)
 script = """
 %s && %s && %s && %s && %s status
 """ % (cmdLogon, cmdProject, cmdScale, cmdUnDeploy, ocCmd)
-print script
+#print script
 print "-------------------------"
 
 stdout = CapturingOverthereExecutionOutputHandler.capturingHandler()

@@ -27,15 +27,13 @@ print "OC        = %s" % ocCmd
 print " "
 cmdLogon  = "%s login --server=%s -u %s -p %s --insecure-skip-tls-verify" % (ocCmd, ocUrl, ocUsername, ocPassword)
 cmdProject ="%s project %s" % (ocCmd, ocProject)
-cmdDeploy = "%s new-app %s:%s --name=%s " % (ocCmd, dockerImage, dockerTag, appName)
-cmdExpose = "%s expose service %s" % (ocCmd, appName)
+cmdExpose = "%s expose service/%s" % (ocCmd, serviceName)
 script = """
 %s
 %s
 %s
-%s
 %s status
-""" % (cmdLogon, cmdProject, cmdDeploy, cmdExpose, ocCmd)
+""" % (cmdLogon, cmdProject, cmdExpose, ocCmd)
 
 #print script
 print "-------------------------"

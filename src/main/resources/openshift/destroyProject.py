@@ -33,7 +33,7 @@ script = """
 %s
 
 """ % (cmdLogon, cmdProject)
-print script
+#print script
 print "-------------------------"
 
 stdout = CapturingOverthereExecutionOutputHandler.capturingHandler()
