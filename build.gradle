@@ -23,15 +23,6 @@ apply plugin: 'maven'
 
 version='1.0.5'
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-    maven {
-        url 'https://dist.xebialabs.com/public/maven2'
-    }
-    maven { url "http://repo.maven.apache.org/maven2" }
-}
-
 license {
     header rootProject.file('src/main/license/xebialabs_community.license')
     strictCheck true
